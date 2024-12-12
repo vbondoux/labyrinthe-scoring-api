@@ -1,1 +1,2 @@
-Scoring API Labyrithe
+# Scoring Labyrithe API
+Scoring Labyrithe API
