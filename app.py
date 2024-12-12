@@ -1,3 +1,4 @@
+import os
 from flask import Flask, request, jsonify
 
 app = Flask(__name__)
@@ -5,7 +6,7 @@ app = Flask(__name__)
 @app.route('/calculate-scores', methods=['POST'])
 def calculate_scores():
     try:
-        # Récupérer les données de la requête 2
+        # Récupérer les données de la requête
         data = request.get_json()
         reponses = data.get('reponses', [])
 
@@ -42,8 +43,12 @@ def calculate_scores():
         return jsonify({"error": str(e)}), 400
 
 
-# Facultatif : endpoint pour tester l'API
 @app.route('/', methods=['GET'])
 def home():
     return jsonify({"message": "Bienvenue dans l'API Labyrinthe. Utilisez POST /calculate-scores pour soumettre vos données."})
 
+
+if __name__ == "__main__":
+    # Récupérer le port dynamique pour Railway
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
