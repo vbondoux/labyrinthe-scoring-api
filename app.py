@@ -5,7 +5,7 @@ app = Flask(__name__)
 @app.route('/calculate-scores', methods=['POST'])
 def calculate_scores():
     try:
-        # Récupérer les données de la requête
+        # Récupérer les données de la requête 2
         data = request.get_json()
         reponses = data.get('reponses', [])
 
